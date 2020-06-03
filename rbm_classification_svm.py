@@ -19,13 +19,12 @@ def get_arguments():
 
     # Creates the ArgumentParser
     parser = argparse.ArgumentParser(
-        usage='Trains, reconstructs and saves an RBM model.')
+        usage='Loads a pre-trained RBM and classifies using SVM.')
 
     parser.add_argument('dataset', help='Dataset identifier',
                         choices=['mnist', 'fmnist', 'kmnist'])
 
-    parser.add_argument(
-        'trained_model', help='Path to pre-trained model', type=str)
+    parser.add_argument('trained_model', help='Path to pre-trained model', type=str)
 
     return parser.parse_args()
 
@@ -72,4 +71,4 @@ if __name__ == '__main__':
     acc = clf.score(f_test.detach().cpu().numpy(),
                     y_test.detach().cpu().numpy())
 
-    logger.info(acc)
+    logger.info(f'Accuracy: {acc}')
