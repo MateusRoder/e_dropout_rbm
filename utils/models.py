@@ -4,7 +4,7 @@ from opytimizer.optimizers.swarm import pso
 
 
 class Model:
-    """A model class to help users in selecting distinct RBMs from the command line.
+    """A Model class to help users in selecting distinct RBMs from the command line.
 
     """
 
@@ -52,7 +52,7 @@ def get_model(name):
 
 
 class MetaHeuristic:
-    """A Meta-Heuristic class to help users in selecting distinct meta-heuristics from the command line.
+    """A MetaHeuristic class to help users in selecting distinct meta-heuristics from the command line.
 
     """
 

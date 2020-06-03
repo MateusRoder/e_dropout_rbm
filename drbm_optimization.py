@@ -1,12 +1,12 @@
 import argparse
 
-import torch
 import numpy as np
+import torch
 
 import utils.load as l
 import utils.models as m
+import utils.opt as o
 import utils.target as t
-import utils.wrapper as w
 
 
 def get_arguments():
@@ -92,7 +92,7 @@ if __name__ == '__main__':
     opt_fn = t.reconstruction(model, train, val, n_visible, n_hidden, steps, lr, momentum, decay, T, gpu, batch_size, epochs)
 
     # Running the optimization task
-    history = w.optimize(meta_heuristic, opt_fn, n_agents, n_iterations, hyperparams)
+    history = o.optimize(meta_heuristic, opt_fn, n_agents, n_iterations, hyperparams)
 
     # Saves the history object to an output file
     history.save(f'models/{meta}_{n_hidden}hid_{lr}lr_drbm_{dataset}_{seed}.pkl')
