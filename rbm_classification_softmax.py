@@ -30,7 +30,7 @@ def get_arguments():
 
     parser.add_argument('-batch_size', help='Batch size', type=int, default=256)
 
-    parser.add_argument('-epochs', help='Number of training epochs', type=int, default=10)
+    parser.add_argument('-epochs', help='Number of fine-tuning epochs', type=int, default=10)
 
     return parser.parse_args()
 
