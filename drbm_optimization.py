@@ -1,10 +1,12 @@
 import argparse
 
 import torch
+import numpy as np
 
 import utils.load as l
 import utils.models as m
 import utils.target as t
+import utils.wrapper as w
 
 
 def get_arguments():
@@ -40,11 +42,11 @@ def get_arguments():
 
     parser.add_argument('-batch_size', help='Batch size', type=int, default=256)
 
-    parser.add_argument('-epochs', help='Number of training epochs', type=int, default=50)
+    parser.add_argument('-epochs', help='Number of training epochs', type=int, default=1)
 
-    parser.add_argument('-n_agents', help='Number of meta-heuristic agents', type=int, default=10)
+    parser.add_argument('-n_agents', help='Number of meta-heuristic agents', type=int, default=1)
 
-    parser.add_argument('-n_iter', help='Number of meta-heuristic iterations', type=int, default=10)
+    parser.add_argument('-n_iter', help='Number of meta-heuristic iterations', type=int, default=1)
 
     parser.add_argument('-seed', help='Seed identifier', type=int, default=0)
 
@@ -82,11 +84,12 @@ if __name__ == '__main__':
     # Loads the data
     train, val, _ = l.load_dataset(name=dataset)
 
-    # Defining the torch seed
+    # Defining torch and numpy seeds
     torch.manual_seed(seed)
+    np.random.seed(seed)
 
     # Initializes the optimization target
-    opt_fn = t.reconstruction(model, train, val, n_visible, n_hidden, steps, lr, momentum, decay, T, p, gpu, batch_size, epochs)
+    opt_fn = t.reconstruction(model, train, val, n_visible, n_hidden, steps, lr, momentum, decay, T, gpu, batch_size, epochs)
 
     # Running the optimization task
     history = w.optimize(meta_heuristic, opt_fn, n_agents, n_iterations, hyperparams)

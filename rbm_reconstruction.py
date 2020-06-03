@@ -83,7 +83,7 @@ if __name__ == '__main__':
                     momentum=momentum, decay=decay, temperature=T, use_gpu=gpu)
     else:
         rbm = model(n_visible=n_visible, n_hidden=n_hidden, steps=steps, learning_rate=lr,
-                    momentum=momentum, decay=decay, temperature=T, p=p, use_gpu=gpu)
+                    momentum=momentum, decay=decay, temperature=T, dropout=p, use_gpu=gpu)
 
     # Fitting the model
     rbm.fit(train, batch_size=batch_size, epochs=epochs)
