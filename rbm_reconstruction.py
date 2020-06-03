@@ -92,4 +92,4 @@ if __name__ == '__main__':
     rbm.reconstruct(test)
 
     # Saving the model
-    torch.save(model, f'models/{n_hidden}hid_{lr}lr_{name}_{dataset}_{seed}.pth')
+    torch.save(rbm, f'models/{n_hidden}hid_{lr}lr_{name}_{dataset}_{seed}.pth')

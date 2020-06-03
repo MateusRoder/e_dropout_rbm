@@ -37,3 +37,24 @@ def load_dataset(name='mnist', val_split=0.2):
                           transform=tv.transforms.ToTensor())
 
     return train, val, test
+
+
+def dataset_as_tensor(dataset):
+    """Transforms a PyTorch dataset into tensors.
+
+    Args:
+        dataset (torch.utils.data.Dataset): PyTorch dataset.
+
+    Returns:
+        Data and labels into a tensor formatting.
+
+    """
+
+    # Creates batches using PyTorch's DataLoader
+    batches = torch.utils.data.DataLoader(
+        dataset, batch_size=len(dataset), shuffle=False, num_workers=1)
+
+    # Iterates through the single batch
+    for batch in batches:
+        # Returns data and labels
+        return batch[0], batch[1]

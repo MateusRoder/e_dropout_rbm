@@ -18,7 +18,7 @@ def get_arguments():
     """
 
     # Creates the ArgumentParser
-    parser = argparse.ArgumentParser(usage='Trains, reconstructs and saves an RBM model.')
+    parser = argparse.ArgumentParser(usage='Optimizes a Dropout RBM over a validation set.')
 
     parser.add_argument('dataset', help='Dataset identifier', choices=['mnist', 'fmnist', 'kmnist'])
 
