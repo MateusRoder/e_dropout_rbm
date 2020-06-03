@@ -1,0 +1,5 @@
+# Learnergy models
+*.pth
+
+# Opytimizer models
+*.pkl

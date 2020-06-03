@@ -1,0 +1,2 @@
+learnergy>=1.0.5
+opytimizer>=2.0.0
