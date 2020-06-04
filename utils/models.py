@@ -1,6 +1,8 @@
 from learnergy.models import RBM, DropoutRBM, EDropoutRBM
 from opytimizer.core.optimizer import Optimizer
-from opytimizer.optimizers.swarm import pso
+from opytimizer.optimizers.evolutionary import de, ga
+from opytimizer.optimizers.science import bh
+from opytimizer.optimizers.swarm import ba, pso
 
 
 class Model:
@@ -74,6 +76,10 @@ class MetaHeuristic:
 
 # Defines a meta-heuristic dictionary constant with the possible values
 META = dict(
+    ba=MetaHeuristic(ba.BA, dict(f_min=0, f_max=2, A=0.5, r=0.5)),
+    bh=MetaHeuristic(bh.BH, dict()),
+    de=MetaHeuristic(de.DE, dict(CR=0.9, F=0.7)),
+    ga=MetaHeuristic(ga.GA, dict(p_selection=0.75, p_mutation=0.25, p_crossover=0.5)),
     pso=MetaHeuristic(pso.PSO, dict(w=0.7, c1=1.7, c2=1.7))
 )
 
