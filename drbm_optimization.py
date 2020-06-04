@@ -22,7 +22,7 @@ def get_arguments():
 
     parser.add_argument('dataset', help='Dataset identifier', choices=['mnist', 'fmnist', 'kmnist'])
 
-    parser.add_argument('mh', help='Meta-heuristic identifier', choices=['pso'])
+    parser.add_argument('mh', help='Meta-heuristic identifier', choices=['ba', 'bh', 'de', 'ga', 'gs', 'pso'])
 
     parser.add_argument('-n_visible', help='Number of visible units', type=int, default=784)
 
@@ -91,8 +91,15 @@ if __name__ == '__main__':
     # Initializes the optimization target
     opt_fn = t.reconstruction(model, train, val, n_visible, n_hidden, steps, lr, momentum, decay, T, gpu, batch_size, epochs)
 
-    # Running the optimization task
-    history = o.optimize(meta_heuristic, opt_fn, n_agents, n_iterations, hyperparams)
+    # Checking it is supposed to use grid search
+    if meta == 'gs':
+        # Running the grid search task
+        history = o.grid_search(meta_heuristic, opt_fn)
+
+    # If not
+    else:
+        # Running the optimization task
+        history = o.optimize(meta_heuristic, opt_fn, n_agents, n_iterations, hyperparams)
 
     # Saves the history object to an output file
     history.save(f'models/{meta}_{n_hidden}hid_{lr}lr_drbm_{dataset}_{seed}.pkl')

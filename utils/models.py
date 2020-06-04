@@ -1,6 +1,7 @@
 from learnergy.models import RBM, DropoutRBM, EDropoutRBM
 from opytimizer.core.optimizer import Optimizer
 from opytimizer.optimizers.evolutionary import de, ga
+from opytimizer.optimizers.misc import gs
 from opytimizer.optimizers.science import bh
 from opytimizer.optimizers.swarm import ba, pso
 
@@ -80,6 +81,7 @@ META = dict(
     bh=MetaHeuristic(bh.BH, dict()),
     de=MetaHeuristic(de.DE, dict(CR=0.9, F=0.7)),
     ga=MetaHeuristic(ga.GA, dict(p_selection=0.75, p_mutation=0.25, p_crossover=0.5)),
+    gs=MetaHeuristic(gs.GS, dict()),
     pso=MetaHeuristic(pso.PSO, dict(w=0.7, c1=1.7, c2=1.7))
 )
 

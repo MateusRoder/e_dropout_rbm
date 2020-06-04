@@ -2,7 +2,7 @@
 DATASET="mnist"
 
 # Defining a constant to hold the possible meta-heuristics
-MH=("ba" "bh" "de" "ga" "pso")
+MH=("ba" "bh" "de" "ga" "gs" "pso")
 
 # Creating a loop of meta-heuristics
 for i in "${MH[@]}"; do
