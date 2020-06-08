@@ -5,7 +5,7 @@ DATASET="mnist"
 MH=("ba" "bh" "de" "ga" "gs" "pso")
 
 # Creating a loop of meta-heuristics
-for i in "${MH[@]}"; do
+for M in "${MH[@]}"; do
     # Performs the optimization procedure
-    python drbm_optimization.py ${DATASET} ${MH} -n_hidden 128 -lr 0.1 -seed 0
+    python drbm_optimization.py ${DATASET} ${M} -n_hidden 128 -lr 0.1 -seed 0
 done
