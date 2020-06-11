@@ -5,7 +5,7 @@ from opytimizer.spaces.grid import GridSpace
 from opytimizer.spaces.search import SearchSpace
 
 
-def grid_search(opt, target, step=0.001):
+def grid_search(opt, target, step=0.01):
     """Abstracts Opytimizer's grid search into a single method.
 
     Args:
