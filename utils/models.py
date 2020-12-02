@@ -1,4 +1,4 @@
-from learnergy.models.binary import RBM, DropoutRBM, EDropoutRBM
+from learnergy.models.bernoulli import RBM, DropoutRBM, EDropoutRBM
 from opytimizer.core.optimizer import Optimizer
 from opytimizer.optimizers.evolutionary import de, ga
 from opytimizer.optimizers.misc import gs
