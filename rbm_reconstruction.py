@@ -2,8 +2,8 @@ import argparse
 
 import torch
 
-import utils.load as l
-import utils.models as m
+import utils.loader as l
+import utils.objects as o
 
 
 def get_arguments():
@@ -19,7 +19,7 @@ def get_arguments():
 
     parser.add_argument('dataset', help='Dataset identifier', choices=['mnist', 'fmnist', 'kmnist'])
 
-    parser.add_argument('name', help='Model identifier', choices=['rbm', 'drbm', 'edrbm'])
+    parser.add_argument('model_name', help='Model identifier', choices=['rbm', 'drbm', 'edrbm'])
 
     parser.add_argument('-n_visible', help='Number of visible units', type=int, default=784)
 
@@ -33,15 +33,15 @@ def get_arguments():
 
     parser.add_argument('-decay', help='Weight decay', type=float, default=0)
 
-    parser.add_argument('-temp', help='Temperature', type=float, default=1)
+    parser.add_argument('-temperature', help='Temperature', type=float, default=1)
 
     parser.add_argument('-p', help='Dropout probability', type=float, default=0.5)
 
-    parser.add_argument('-gpu', help='GPU usage', type=bool, default=True)
+    parser.add_argument('-batch_size', help='Batch size', type=int, default=128)
 
-    parser.add_argument('-batch_size', help='Batch size', type=int, default=256)
+    parser.add_argument('-epochs', help='Number of training epochs', type=int, default=5)
 
-    parser.add_argument('-epochs', help='Number of training epochs', type=int, default=50)
+    parser.add_argument('-device', help='CPU or GPU usage', choices=['cpu', 'cuda'])
 
     parser.add_argument('-seed', help='Seed identifier', type=int, default=0)
 
@@ -54,19 +54,27 @@ if __name__ == '__main__':
 
     # Gathering variables from arguments
     dataset = args.dataset
-    name = args.name
+    name = args.model_name
     n_visible = args.n_visible
     n_hidden = args.n_hidden
     steps = args.steps
     lr = args.lr
     momentum = args.momentum
     decay = args.decay
-    T = args.temp
+    T = args.temperature
     p = args.p
-    gpu = args.gpu
     batch_size = args.batch_size
     epochs = args.epochs
+    device = args.device
     seed = args.seed
+
+    # Checks for the name of device
+    if device == 'cpu':
+        # Updates accordingly
+        use_gpu = False
+    else:
+        # Updates accordingly
+        use_gpu = True
 
     # Loads the data
     train, _, test = l.load_dataset(name=dataset)
@@ -75,15 +83,15 @@ if __name__ == '__main__':
     torch.manual_seed(seed)
 
     # Gathering the model
-    model = m.get_model(name).obj
+    model = o.get_model(name).obj
 
     # Initializing the model
     if name != 'drbm':
         rbm = model(n_visible=n_visible, n_hidden=n_hidden, steps=steps, learning_rate=lr,
-                    momentum=momentum, decay=decay, temperature=T, use_gpu=gpu)
+                    momentum=momentum, decay=decay, temperature=T, use_gpu=use_gpu)
     else:
         rbm = model(n_visible=n_visible, n_hidden=n_hidden, steps=steps, learning_rate=lr,
-                    momentum=momentum, decay=decay, temperature=T, dropout=p, use_gpu=gpu)
+                    momentum=momentum, decay=decay, temperature=T, dropout=p, use_gpu=use_gpu)
 
     # Fitting the model
     rbm.fit(train, batch_size=batch_size, epochs=epochs)
