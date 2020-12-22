@@ -9,6 +9,7 @@
 If you use our work to fulfill any of your needs, please cite us:
 
 ```
+Roder, Mateus ; ROSA, G. ; de Albuquerque, V. H. C. ; ROSSI, A. L. D. ; PAPA, JOAO P . Energy-based Dropout in Restricted Boltzmann Machines: Why not go random. IEEE Transactions on Emerging Topics in Computational Intelligence, 2020.
 ```
 
 ---
