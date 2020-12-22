@@ -1,4 +1,4 @@
-from learnergy.models.bernoulli import RBM, DropoutRBM, EDropoutRBM
+from learnergy.models.bernoulli import RBM, DropoutRBM, EDropoutRBM, DropConnRBM
 
 
 class Model:
@@ -23,7 +23,8 @@ class Model:
 MODEL = dict(
     rbm=Model(RBM),
     drbm=Model(DropoutRBM),
-    edrbm=Model(EDropoutRBM)
+    edrbm=Model(EDropoutRBM),
+    dcrbm=Model(DropConnRBM),
 )
 
 
