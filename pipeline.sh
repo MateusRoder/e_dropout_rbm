@@ -1,18 +1,18 @@
 # Common variables definition
 DATA="mnist"
-BATCH_SIZE=128
-EPOCHS=5
-DEVICE="cpu"
-N_RUNS=1
+BATCH_SIZE=256
+EPOCHS=50
+DEVICE="gpu"
+N_RUNS=10
 
 # Architecture variables
-MODEL="rbm"
+MODEL="edrbm"
 N_VISIBLE=784
-N_HIDDEN=128
+N_HIDDEN=1024
 STEPS=1
 LR=0.1
 MOMENTUM=0
-DECAY=0
+DECAY=0.0
 T=1
 P=0.5
 
