@@ -5,6 +5,7 @@ import torch
 import utils.loader as l
 import utils.objects as o
 
+from learnergy.visual.make_ssim import make_ssim
 
 def get_arguments():
     """Gets arguments from the command line.
@@ -19,7 +20,7 @@ def get_arguments():
 
     parser.add_argument('dataset', help='Dataset identifier', choices=['mnist', 'fmnist', 'kmnist'])
 
-    parser.add_argument('model_name', help='Model identifier', choices=['rbm', 'drbm', 'edrbm'])
+    parser.add_argument('model_name', help='Model identifier', choices=['rbm', 'drbm', 'edrbm', 'dcrbm'])
 
     parser.add_argument('-n_visible', help='Number of visible units', type=int, default=784)
 
@@ -86,7 +87,7 @@ if __name__ == '__main__':
     model = o.get_model(name).obj
 
     # Initializing the model
-    if name != 'drbm':
+    if name != 'drbm' or name != 'dcrbm':
         rbm = model(n_visible=n_visible, n_hidden=n_hidden, steps=steps, learning_rate=lr,
                     momentum=momentum, decay=decay, temperature=T, use_gpu=use_gpu)
     else:
@@ -96,8 +97,9 @@ if __name__ == '__main__':
     # Fitting the model
     rbm.fit(train, batch_size=batch_size, epochs=epochs)
 
-    # Reconstructs the model
-    rbm.reconstruct(test)
+    # Reconstructs the model and make the final SSIM metric evaluation
+    mse, visible_probs = rbm.reconstruct(test)
+    mean_ssim = make_ssim(visible_probs, test.data)
 
     # Saving the model
     torch.save(rbm, f'models/{n_hidden}hid_{lr}lr_{name}_{dataset}_{seed}.pth')

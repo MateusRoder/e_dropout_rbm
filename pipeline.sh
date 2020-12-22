@@ -2,13 +2,13 @@
 DATA="mnist"
 BATCH_SIZE=256
 EPOCHS=50
-DEVICE="gpu"
+DEVICE="cuda" # "cpu" or "cuda"
 N_RUNS=10
 
 # Architecture variables
-MODEL="edrbm"
+MODEL="rbm"
 N_VISIBLE=784
-N_HIDDEN=1024
+N_HIDDEN=128
 STEPS=1
 LR=0.1
 MOMENTUM=0
