@@ -32,6 +32,7 @@ Install all the pre-needed requirements using:
 ```Python
 pip install -r requirements.txt
 ```
+* If you encounter any problems with the automatic installation of the "learnergy" package, it is possible that its direct installation from the "https://github.com/gugarosa/learnergy" repository corrects incompatibilities, but do not hesitate in contact us.
 
 ### Data configuration
 
