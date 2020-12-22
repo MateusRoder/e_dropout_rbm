@@ -24,7 +24,7 @@ MODEL = dict(
     rbm=Model(RBM),
     drbm=Model(DropoutRBM),
     edrbm=Model(EDropoutRBM),
-    dcrbm=Model(DropConnRBM),
+    dcrbm=Model(DropConnRBM)
 )
 
 
