@@ -2,10 +2,11 @@ import argparse
 
 import torch
 
+from learnergy.math.metrics import calculate_ssim
+
 import utils.loader as l
 import utils.objects as o
 
-from learnergy.visual.make_ssim import make_ssim
 
 def get_arguments():
     """Gets arguments from the command line.
@@ -97,9 +98,11 @@ if __name__ == '__main__':
     # Fitting the model
     rbm.fit(train, batch_size=batch_size, epochs=epochs)
 
-    # Reconstructs the model and make the final SSIM metric evaluation
+    # Reconstructs the model
     mse, visible_probs = rbm.reconstruct(test)
-    mean_ssim = make_ssim(visible_probs, test.data)
+    
+    # Calculates the SSIM
+    ssim = calculate_ssim(visible_probs, test.data)
 
     # Saving the model
     torch.save(rbm, f'models/{n_hidden}hid_{lr}lr_{name}_{dataset}_{seed}.pth')
