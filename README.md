@@ -8,8 +8,13 @@
 
 If you use our work to fulfill any of your needs, please cite us:
 
-```
-RODER, M. ; ROSA, G. ; de Albuquerque, V. H. C. ; ROSSI, A. L. D. ; PAPA, JOAO P . Energy-based Dropout in Restricted Boltzmann Machines: Why not go random. IEEE Transactions on Emerging Topics in Computational Intelligence, 2020.
+```BibTex
+@misc{roder2020edrop,
+    title={Energy-based Dropout in Restricted Boltzmann Machines: Why not go random},
+    author={Mateus Roder, Gustavo H. de Rosa, Vitor H. C. de Albuquerque, André L. D. Rossi and João P. Papa},
+    journal={IEEE Transactions on Emerging Topics in Computational Intelligence},
+    year={2020}
+}
 ```
 
 ---
@@ -32,7 +37,7 @@ Install all the pre-needed requirements using:
 ```Python
 pip install -r requirements.txt
 ```
-* If you encounter any problems with the automatic installation of the "learnergy" package, it is possible that its direct installation from the "https://github.com/gugarosa/learnergy" repository corrects incompatibilities, but do not hesitate in contact us.
+*If you encounter any problems with the automatic installation of the [learnergy](https://github.com/gugarosa/learnergy) package, contact us.*
 
 ### Data configuration
 
