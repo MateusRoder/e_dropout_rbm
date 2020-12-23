@@ -1,4 +1,4 @@
-from learnergy.models.bernoulli import RBM, DropoutRBM, EDropoutRBM, DropConnRBM
+from learnergy.models.bernoulli import RBM, DropoutRBM, EDropoutRBM, DropConnectRBM
 
 
 class Model:
@@ -22,9 +22,9 @@ class Model:
 # Defines a meta-heuristic dictionary constant with the possible values
 MODEL = dict(
     rbm=Model(RBM),
+    dcrbm=Model(DropConnectRBM),
     drbm=Model(DropoutRBM),
-    edrbm=Model(EDropoutRBM),
-    dcrbm=Model(DropConnRBM)
+    edrbm=Model(EDropoutRBM)
 )
 
 
