@@ -9,7 +9,7 @@
 If you use our work to fulfill any of your needs, please cite us:
 
 ```BibTex
-@ARTICLE{roder2020edrop,
+@article{roder2020edrop,
   author={M. {Roder} and G. H. {de Rosa} and V. H. C. {de Albuquerque} and A. L. D. {Rossi} and J. P. {Papa}},
   journal={IEEE Transactions on Emerging Topics in Computational Intelligence}, 
   title={Energy-Based Dropout in Restricted Boltzmann Machines: Why Not Go Random}, 
