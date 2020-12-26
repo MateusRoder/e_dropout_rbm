@@ -9,11 +9,15 @@
 If you use our work to fulfill any of your needs, please cite us:
 
 ```BibTex
-@misc{roder2020edrop,
-    title={Energy-based Dropout in Restricted Boltzmann Machines: Why not go random},
-    author={Mateus Roder, Gustavo H. de Rosa, Vitor H. C. de Albuquerque, André L. D. Rossi and João P. Papa},
-    journal={IEEE Transactions on Emerging Topics in Computational Intelligence},
-    year={2020}
+@ARTICLE{roder2020edrop,
+  author={M. {Roder} and G. H. {de Rosa} and V. H. C. {de Albuquerque} and A. L. D. {Rossi} and J. P. {Papa}},
+  journal={IEEE Transactions on Emerging Topics in Computational Intelligence}, 
+  title={Energy-Based Dropout in Restricted Boltzmann Machines: Why Not Go Random}, 
+  year={2020},
+  volume={},
+  number={},
+  pages={1-11},
+  doi={10.1109/TETCI.2020.3043764}}
 }
 ```
 
